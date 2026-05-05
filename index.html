@@ -203,6 +203,13 @@
       margin-bottom: 16px;
     }
 
+    .language-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
     .template-toolbar {
       display: flex;
       flex-wrap: wrap;
@@ -341,6 +348,11 @@
       </div>
 
       <div class="card">
+        <div class="language-toolbar">
+          <button class="active" onclick="setLanguage('en', this)">EN Templates</button>
+          <button onclick="setLanguage('de', this)">DE Templates</button>
+        </div>
+
         <div class="template-toolbar">
           <button class="active" onclick="setStep(1, this)">Step 1</button>
           <button onclick="setStep(2, this)">Step 2</button>
@@ -461,12 +473,13 @@
     };
 
     const templates = {
-      1: {
-        email: {
-          goal: "Create continuity after the showroom visit.",
-          timing: "Within 24 hours",
-          use: "All lead types",
-          text: `Subject: Your sofa ideas from our showroom visit
+      en: {
+        1: {
+          email: {
+            goal: "Create continuity after the showroom visit.",
+            timing: "Within 24 hours",
+            use: "All lead types",
+            text: `Subject: Your sofa ideas from our showroom visit
 
 Hi [First Name],
 
@@ -488,12 +501,12 @@ Take your time to review it. If you have questions about size, fabric, or layout
 
 Warm regards,
 [Advisor Name]`
-        },
-        call: {
-          goal: "Usually not the primary Step 1 channel unless the lead is very hot.",
-          timing: "Same or next day for high-intent customers",
-          use: "Hot leads only",
-          text: `Opening:
+          },
+          call: {
+            goal: "Usually not the primary Step 1 channel unless the lead is very hot.",
+            timing: "Same or next day for high-intent customers",
+            use: "Hot leads only",
+            text: `Opening:
 Hi [First Name], this is [Advisor Name] from Livom. I hope this is still a good moment.
 
 Reason:
@@ -507,24 +520,24 @@ Is there anything you are unsure about — size, fabric, layout, price, or timin
 
 Next step:
 I can either adjust the configuration for you or send over the final version again with my recommendation.`
-        },
-        whatsapp: {
-          goal: "Short personal nudge after email, only with permission.",
-          timing: "After the email, if agreed in store",
-          use: "Hot / Warm leads",
-          text: `Hi [First Name], this is [Advisor Name] from Livom.
+          },
+          whatsapp: {
+            goal: "Short personal nudge after email, only with permission.",
+            timing: "After the email, if agreed in store",
+            use: "Hot / Warm leads",
+            text: `Hi [First Name], this is [Advisor Name] from Livom.
 
 I just sent you the sofa configuration we discussed in the showroom. I also added a short summary so it is easier to review.
 
 Happy to adjust anything if you notice that size, fabric, or layout should be refined.`
-        }
-      },
-      2: {
-        email: {
-          goal: "Guide the customer based on buying readiness.",
-          timing: "Day 2–6 depending on lead status",
-          use: "Warm / Cold leads, or Hot if call was not possible",
-          text: `Subject: A thought on your sofa configuration
+          }
+        },
+        2: {
+          email: {
+            goal: "Guide the customer based on buying readiness.",
+            timing: "Day 2–6 depending on lead status",
+            use: "Warm / Cold leads, or Hot if call was not possible",
+            text: `Subject: A thought on your sofa configuration
 
 Hi [First Name],
 
@@ -545,12 +558,12 @@ Would you like me to prepare an alternative version as a comparison?
 
 Warm regards,
 [Advisor Name]`
-        },
-        call: {
-          goal: "Resolve open questions and keep momentum.",
-          timing: "Day 2–3 for Hot leads",
-          use: "Hot leads",
-          text: `Opening:
+          },
+          call: {
+            goal: "Resolve open questions and keep momentum.",
+            timing: "Day 2–3 for Hot leads",
+            use: "Hot leads",
+            text: `Opening:
 Hi [First Name], this is [Advisor Name] from Livom. I wanted to briefly check in because your configuration was already quite concrete.
 
 Question:
@@ -568,22 +581,22 @@ That makes sense. Based on what you told me in the showroom, I would recommend [
 
 Close:
 What would be most helpful now: a small adjustment, a second option, or a final confirmation of the setup?`
-        },
-        whatsapp: {
-          goal: "Low-friction check-in.",
-          timing: "Day 2–4",
-          use: "Hot / Warm leads",
-          text: `Hi [First Name], I hope you had a chance to look at the configuration.
+          },
+          whatsapp: {
+            goal: "Low-friction check-in.",
+            timing: "Day 2–4",
+            use: "Hot / Warm leads",
+            text: `Hi [First Name], I hope you had a chance to look at the configuration.
 
 One question from my side: does the setup still feel right for your room, or should I prepare a smaller/larger alternative for comparison?`
-        }
-      },
-      3: {
-        email: {
-          goal: "Handle objections and support decision-making.",
-          timing: "Day 5–8",
-          use: "Hot / Warm leads",
-          text: `Subject: A few points that may help with your decision
+          }
+        },
+        3: {
+          email: {
+            goal: "Handle objections and support decision-making.",
+            timing: "Day 5–8",
+            use: "Hot / Warm leads",
+            text: `Subject: A few points that may help with your decision
 
 Hi [First Name],
 
@@ -604,12 +617,12 @@ If you like, I can send you a final version with [alternative / fabric compariso
 
 Warm regards,
 [Advisor Name]`
-        },
-        call: {
-          goal: "Decision coaching, not pressure.",
-          timing: "Day 5–7 for Hot leads with no response",
-          use: "Hot leads or high basket value",
-          text: `Opening:
+          },
+          call: {
+            goal: "Decision coaching, not pressure.",
+            timing: "Day 5–7 for Hot leads with no response",
+            use: "Hot leads or high basket value",
+            text: `Opening:
 Hi [First Name], I wanted to check in briefly and see whether there is anything still open regarding your sofa decision.
 
 Diagnostic question:
@@ -626,22 +639,22 @@ We can adjust the setup before you decide. I can prepare a comparison if that he
 
 Close:
 What would help you feel confident about the next step?`
-        },
-        whatsapp: {
-          goal: "Short objection prompt.",
-          timing: "Day 5–8",
-          use: "Hot / Warm leads",
-          text: `Hi [First Name], just checking in briefly.
+          },
+          whatsapp: {
+            goal: "Short objection prompt.",
+            timing: "Day 5–8",
+            use: "Hot / Warm leads",
+            text: `Hi [First Name], just checking in briefly.
 
 Is there anything still unclear about the configuration — for example size, fabric, or layout? I am happy to help you refine it before you decide.`
-        }
-      },
-      4: {
-        email: {
-          goal: "Close the loop gracefully.",
-          timing: "Day 10–24 depending on lead status",
-          use: "All lead types",
-          text: `Subject: Should I keep your sofa project open?
+          }
+        },
+        4: {
+          email: {
+            goal: "Close the loop gracefully.",
+            timing: "Day 10–24 depending on lead status",
+            use: "All lead types",
+            text: `Subject: Should I keep your sofa project open?
 
 Hi [First Name],
 
@@ -655,12 +668,12 @@ Should I keep the configuration open for you?
 
 Warm regards,
 [Advisor Name]`
-        },
-        call: {
-          goal: "Final high-intent reactivation.",
-          timing: "Day 10–14",
-          use: "Hot leads only",
-          text: `Opening:
+          },
+          call: {
+            goal: "Final high-intent reactivation.",
+            timing: "Day 10–14",
+            use: "Hot leads only",
+            text: `Opening:
 Hi [First Name], this is [Advisor Name] from Livom. I wanted to briefly close the loop on your sofa project.
 
 Question:
@@ -674,18 +687,246 @@ No problem at all. Would it be helpful if I keep the configuration noted for lat
 
 Close:
 I will update this accordingly and remain available if you want to continue.`
-        },
-        whatsapp: {
-          goal: "Soft re-engagement.",
-          timing: "Day 10–16 for Hot/Warm, later for Cold only if appropriate",
-          use: "Hot / Warm leads with consent",
-          text: `Hi [First Name], I just wanted to check whether your sofa project is still active.
+          },
+          whatsapp: {
+            goal: "Soft re-engagement.",
+            timing: "Day 10–16 for Hot/Warm, later for Cold only if appropriate",
+            use: "Hot / Warm leads with consent",
+            text: `Hi [First Name], I just wanted to check whether your sofa project is still active.
 
 If yes, I am happy to help with the next step. If the timing has changed, no problem at all.`
+          }
+        }
+      },
+
+      de: {
+        1: {
+          email: {
+            goal: "Kontinuität nach dem Showroom-Besuch schaffen.",
+            timing: "Innerhalb von 24 Stunden",
+            use: "Alle Lead-Typen",
+            text: `Betreff: Eure Sofa-Ideen aus dem Showroom
+
+Hallo [Vorname],
+
+vielen Dank für euren Besuch bei uns im Showroom. Es war schön, mehr über euren Wohnraum und eure Wünsche an das neue Sofa zu erfahren.
+
+Wie besprochen, habe ich euch die wichtigsten Punkte kurz zusammengefasst:
+
+• Bevorzugtes Setup: [Konfiguration / Layout]
+• Stoffrichtung: [Stoff / Farbe]
+• Wichtige Bedürfnisse: [Familienalltag / Gäste / Entspannen / Flexibilität / waschbare Bezüge]
+• Persönlicher Hinweis: [konkretes Detail aus der Beratung]
+
+Auf Basis unseres Gesprächs würde ich euch [kurze Empfehlung + Begründung] empfehlen.
+
+Die Konfiguration findet ihr hier:
+[Konfigurationslink]
+
+Schaut euch alles in Ruhe an. Wenn ihr Fragen zu Größe, Stoff oder Layout habt, helfe ich euch gerne, die Konfiguration weiter zu verfeinern.
+
+Herzliche Grüße
+[Advisor Name]`
+          },
+          call: {
+            goal: "Normalerweise kein Pflichtkanal in Step 1, außer bei sehr heißen Leads.",
+            timing: "Am selben oder nächsten Tag bei hoher Kaufabsicht",
+            use: "Nur Hot Leads",
+            text: `Einstieg:
+Hallo [Vorname], hier ist [Advisor Name] von Livom. Passt es gerade kurz?
+
+Grund:
+Ich wollte mich kurz zu eurem Showroom-Besuch melden und sicherstellen, dass die Konfiguration, die ich euch geschickt habe, gut zu dem passt, was wir besprochen haben.
+
+Beratende Frage:
+Nachdem ihr etwas Zeit hattet, darüber nachzudenken — fühlt sich das Setup für euren Raum weiterhin passend an?
+
+Klären:
+Gibt es noch etwas, bei dem ihr unsicher seid — Größe, Stoff, Layout, Preis oder Timing?
+
+Nächster Schritt:
+Ich kann die Konfiguration gerne anpassen oder euch die finale Version nochmals mit meiner Empfehlung zusenden.`
+          },
+          whatsapp: {
+            goal: "Kurzer persönlicher Hinweis nach der E-Mail, nur mit Zustimmung.",
+            timing: "Nach der E-Mail, wenn im Showroom vereinbart",
+            use: "Hot / Warm Leads",
+            text: `Hallo [Vorname], hier ist [Advisor Name] von Livom.
+
+Ich habe euch gerade die Sofa-Konfiguration geschickt, die wir im Showroom besprochen haben. Eine kurze Zusammenfassung ist auch dabei, damit ihr alles leichter prüfen könnt.
+
+Wenn Größe, Stoff oder Layout noch angepasst werden sollen, mache ich das sehr gerne für euch.`
+          }
+        },
+        2: {
+          email: {
+            goal: "Den Kunden abhängig von seiner Kaufbereitschaft weiterführen.",
+            timing: "Tag 2–6 je nach Lead-Status",
+            use: "Warm / Cold Leads oder Hot Leads, falls kein Anruf möglich war",
+            text: `Betreff: Ein Gedanke zu eurer Sofa-Konfiguration
+
+Hallo [Vorname],
+
+ich habe mir eure Konfiguration nochmals angeschaut und wollte euch einen Gedanken mitgeben, der bei der Entscheidung helfen kann.
+
+Da ihr [konkretes Bedürfnis] erwähnt habt, würde ich den Fokus auf [Empfehlung] legen. Das gibt euch [Vorteil: Flexibilität / Komfort / harmonische Raumwirkung / einfache Pflege].
+
+Wenn ihr gerade noch Optionen vergleicht, sind meist diese Punkte entscheidend:
+
+1. Passt die Größe natürlich in den Raum?
+2. Passt der Stoff zu eurem Alltag?
+3. Gibt euch das Setup genug Flexibilität für die nächsten Jahre?
+
+Meine ehrliche Empfehlung wäre:
+[Advisor Empfehlung]
+
+Soll ich euch zusätzlich eine alternative Version zum Vergleich vorbereiten?
+
+Herzliche Grüße
+[Advisor Name]`
+          },
+          call: {
+            goal: "Offene Fragen klären und Momentum halten.",
+            timing: "Tag 2–3 bei Hot Leads",
+            use: "Hot Leads",
+            text: `Einstieg:
+Hallo [Vorname], hier ist [Advisor Name] von Livom. Ich wollte kurz nachfragen, weil eure Konfiguration schon sehr konkret war.
+
+Frage:
+Hattet ihr schon Gelegenheit, euch das Setup anzuschauen?
+
+Achte auf:
+• Unsicherheit bei der Größe
+• Zweifel beim Stoff
+• Abstimmung mit Partner/in
+• Lieferzeitpunkt
+• Preis-/Wert-Frage
+
+Antwort:
+Das kann ich gut nachvollziehen. Basierend auf dem, was ihr mir im Showroom erzählt habt, würde ich [Empfehlung] empfehlen, weil [Begründung].
+
+Abschluss:
+Was wäre jetzt am hilfreichsten: eine kleine Anpassung, eine zweite Option oder eine finale Bestätigung des Setups?`
+          },
+          whatsapp: {
+            goal: "Niedrigschwelliger Check-in.",
+            timing: "Tag 2–4",
+            use: "Hot / Warm Leads",
+            text: `Hallo [Vorname], ich hoffe, ihr hattet schon kurz Zeit, euch die Konfiguration anzuschauen.
+
+Eine Frage von mir: Fühlt sich das Setup für euren Raum weiterhin passend an, oder soll ich euch eine kleinere/größere Alternative zum Vergleich vorbereiten?`
+          }
+        },
+        3: {
+          email: {
+            goal: "Einwände aufgreifen und Entscheidungssicherheit schaffen.",
+            timing: "Tag 5–8",
+            use: "Hot / Warm Leads",
+            text: `Betreff: Ein paar Punkte, die bei der Entscheidung helfen können
+
+Hallo [Vorname],
+
+ich weiß, dass die Wahl eines Sofas nicht nur eine Frage der Optik ist. Es muss vor allem zu eurem Alltag passen.
+
+Aus unserem Gespräch wirken diese Fragen besonders wichtig:
+
+• Funktioniert die Größe gut in eurem Raum?
+• Ist der Stoff praktisch genug für eure Nutzung?
+• Gibt euch die Konfiguration langfristig genug Flexibilität?
+
+Für eure Situation würde ich weiterhin [Konfiguration/Stoff] empfehlen, weil [Begründung].
+
+Ein hilfreicher Gedanke:
+Das Sofa sollte nicht nur zum aktuellen Raum passen. Es sollte auch flexibel genug sein, wenn sich eure Bedürfnisse später verändern.
+
+Wenn ihr möchtet, sende ich euch gerne eine finale Version mit [Alternative / Stoffvergleich / Layout-Anpassung].
+
+Herzliche Grüße
+[Advisor Name]`
+          },
+          call: {
+            goal: "Entscheidungscoaching ohne Druck.",
+            timing: "Tag 5–7 bei Hot Leads ohne Reaktion",
+            use: "Hot Leads oder hoher Warenkorbwert",
+            text: `Einstieg:
+Hallo [Vorname], ich wollte kurz nachfragen, ob bei eurer Sofa-Entscheidung noch etwas offen ist.
+
+Diagnosefrage:
+Was ist aktuell noch das größte Fragezeichen für euch?
+
+Wenn Preis:
+Das verstehe ich gut. Der Wert bei Livom liegt vor allem in der Modularität, den waschbaren Bezügen und der langfristigen Flexibilität. Die Idee ist nicht, das Sofa schnell zu ersetzen, sondern es über die Zeit anzupassen.
+
+Wenn Stoff:
+Das ist eine wichtige Entscheidung. Für eure Nutzung würde ich [Stoff] empfehlen, weil [Begründung].
+
+Wenn Layout:
+Das können wir vor der Entscheidung natürlich noch anpassen. Ich kann euch gerne einen Vergleich vorbereiten.
+
+Abschluss:
+Was würde euch helfen, euch mit dem nächsten Schritt sicher zu fühlen?`
+          },
+          whatsapp: {
+            goal: "Kurzer Impuls zur Klärung von Einwänden.",
+            timing: "Tag 5–8",
+            use: "Hot / Warm Leads",
+            text: `Hallo [Vorname], ich wollte kurz nachfragen.
+
+Ist bei der Konfiguration noch etwas unklar — zum Beispiel Größe, Stoff oder Layout? Ich helfe euch gerne, das vor der Entscheidung noch zu verfeinern.`
+          }
+        },
+        4: {
+          email: {
+            goal: "Den Kontakt wertschätzend abschließen oder reaktivieren.",
+            timing: "Tag 10–24 je nach Lead-Status",
+            use: "Alle Lead-Typen",
+            text: `Betreff: Soll ich euer Sofa-Projekt offenhalten?
+
+Hallo [Vorname],
+
+ich wollte mich noch einmal kurz und ganz entspannt zu eurer Sofa-Konfiguration melden.
+
+Wenn das Thema weiterhin relevant ist, helfe ich euch gerne beim nächsten Schritt — egal ob Layout-Anpassung, Stoffvergleich oder finale Konfiguration.
+
+Wenn der Zeitpunkt gerade nicht passt, ist das natürlich auch völlig in Ordnung.
+
+Soll ich die Konfiguration für euch offenhalten?
+
+Herzliche Grüße
+[Advisor Name]`
+          },
+          call: {
+            goal: "Finale Reaktivierung bei hoher Kaufabsicht.",
+            timing: "Tag 10–14",
+            use: "Nur Hot Leads",
+            text: `Einstieg:
+Hallo [Vorname], hier ist [Advisor Name] von Livom. Ich wollte euer Sofa-Projekt kurz sauber abschließen.
+
+Frage:
+Ist das Sofa aktuell noch ein Thema für euch, oder hat sich das Timing verändert?
+
+Wenn aktiv:
+Super. Was sollten wir als Nächstes noch klären?
+
+Wenn Timing verändert:
+Gar kein Problem. Soll ich die Konfiguration für später notiert lassen?
+
+Abschluss:
+Ich aktualisiere das entsprechend und bin jederzeit da, wenn ihr weitermachen möchtet.`
+          },
+          whatsapp: {
+            goal: "Sanfte Reaktivierung.",
+            timing: "Tag 10–16 bei Hot/Warm, später bei Cold nur wenn passend",
+            use: "Hot / Warm Leads mit Zustimmung",
+            text: `Hallo [Vorname], ich wollte kurz fragen, ob euer Sofa-Projekt noch aktuell ist.
+
+Wenn ja, helfe ich euch gerne beim nächsten Schritt. Wenn sich das Timing verändert hat, ist das natürlich völlig in Ordnung.`
+          }
         }
       }
     };
 
+    let currentLanguage = "en";
     let currentLead = "hot";
     let currentStep = 1;
     let currentChannel = "email";
@@ -714,6 +955,13 @@ If yes, I am happy to help with the next step. If the timing has changed, no pro
       `).join("");
     }
 
+    function setLanguage(language, btn) {
+      currentLanguage = language;
+      document.querySelectorAll(".language-toolbar button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderTemplate();
+    }
+
     function setStep(step, btn) {
       currentStep = step;
       const buttons = document.querySelectorAll(".template-toolbar button:nth-child(-n+4)");
@@ -731,7 +979,7 @@ If yes, I am happy to help with the next step. If the timing has changed, no pro
     }
 
     function renderTemplate() {
-      const item = templates[currentStep][currentChannel];
+      const item = templates[currentLanguage][currentStep][currentChannel];
       document.getElementById("templateMeta").innerHTML = `
         <div><strong>Goal</strong><br>${item.goal}</div>
         <div><strong>Timing</strong><br>${item.timing}</div>
